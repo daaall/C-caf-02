@@ -33,14 +33,19 @@ int main (){
 		}
 	
 	
-	*tete=remplissage ( n,mat);
+	tete=remplissage ( n,mat);
 	affichage_liste (tete);
 	
 	//retourner une val
-	printf ("donnez le num de ligne de la val que vous voulez afficher \n");
-	scanf ("%d",&i);
-	printf ("donnez le num de colonne de la val que vous voulez afficher \n");
-	scanf ("%d",&j);
+	do {
+		printf ("donnez le num de ligne de la val que vous voulez afficher \n");
+		scanf ("%d",&i);
+	}while (i<0 || i>=n);
+	do {
+		printf ("donnez le num de colonne de la val que vous voulez afficher \n");
+		scanf ("%d",&j);
+	}while (j<0 || j>=n);
+	
 	printf ("la valeur recherchee est : %d \n",affichage_val(i,j,tete));
 	
 	

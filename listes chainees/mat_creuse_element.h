@@ -8,7 +8,7 @@ struct element {
 struct element2 {
 	int num_colonne;
 	int val;
-	struct element *svt_colonne;
+	struct element2 *svt_colonne;
 }; typedef struct  element2 element2 ;
 
 
