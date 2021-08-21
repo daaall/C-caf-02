@@ -3,7 +3,7 @@
 
 
 struct PILE {
-	int champs;
+	char champs;
 	struct PILE *svt;
 };typedef struct PILE PILE;
 
@@ -12,7 +12,7 @@ void initpile (PILE **tete){
 	*tete=NULL;
 }
 
-void empiler (PILE **tete, int val){
+void empiler (PILE **tete, char val){
 	PILE *p;
 	
 	
@@ -22,7 +22,7 @@ void empiler (PILE **tete, int val){
 	*tete=p;
 	
 }
-void depiler (PILE **tete, int *val){
+void depiler (PILE **tete, char *val){
 	PILE *x;
 	
 	
@@ -41,11 +41,11 @@ bool pile_vid ( PILE *tete){
 }
 
 void afficher_pile (PILE *tete){
-	int val;
+	char val;
 	
 	while (!pile_vid(tete)){
 		depiler(&tete,&val);
-		printf ("%d \n",val);
+		printf ("%c \n",val);
 	}
 	
 	
