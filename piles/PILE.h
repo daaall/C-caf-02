@@ -1,18 +1,22 @@
 #include<stdbool.h>
 
-
+struct noeud {
+	char nom[10];
+	int nb_hab;
+	float superficie;
+};typedef struct noeud noeud;
 
 struct PILE {
-	int champs;
+	noeud champs;
 	struct PILE *svt;
 };typedef struct PILE PILE;
 
 
-void initpile (PILE **tete){
+void init_pile (PILE **tete){
 	*tete=NULL;
 }
 
-void empiler (PILE **tete, int val){
+void empiler (PILE **tete, noeud val){
 	PILE *p;
 	
 	
@@ -22,7 +26,7 @@ void empiler (PILE **tete, int val){
 	*tete=p;
 	
 }
-void depiler (PILE **tete,int  *val){
+void depiler (PILE **tete,noeud  *val){
 	PILE *x;
 	
 	
@@ -32,20 +36,25 @@ void depiler (PILE **tete,int  *val){
 	free(x);
 }
 
-int sommet (PILE *tete){
+noeud sommet (PILE *tete){
 	return tete->champs;
 	
 }
-bool pile_vid ( PILE *tete){
+bool pile_vide ( PILE *tete){
 	return (tete==NULL);
 }
 
 void afficher_pile (PILE *tete){
-	int val;
+	noeud val;
 	
-	while (!pile_vid(tete)){
+	while (!pile_vide(tete)){
 		depiler(&tete,&val);
-		printf ("%d \n",val);
+		printf ("%d \n",val.nb_hab);
+		printf (" %s \n",val.nom);
+		printf ("%.2f \n",val.superficie);
+		
+		printf ("\n");
+		printf ("\n");
 	}
 	
 	
