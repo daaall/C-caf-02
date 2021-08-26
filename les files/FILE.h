@@ -37,7 +37,7 @@ bool file_vide (File *tete){
 
 
 void defiler(File **tete, int *val){
-	if (file_vide)
+	if (file_vide(*tete))
 		printf("la file est vide \n");
 	else {
 	*val=(*tete)->champs;
