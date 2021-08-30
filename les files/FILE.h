@@ -1,55 +1,62 @@
 
-struct File{
-	int champs;
-	struct File *svt;
-}; typedef struct File File;
+struct element{
+	int val;
+	struct element *svt;
+}; typedef struct element element;
+
+struct File {
+	element *premier;
+	element *dernier;
+};typedef struct File File;
 
 
 
-void init_file (File **tete){
-	*tete=NULL;
+void init_file (File *tete){
+	(*tete).premier=NULL;
+	(*tete).dernier=NULL;
 }
 
-void enfiler(File **tete, int val){
-	File *p,*a=*tete,*q;
+void enfiler(File *tete, int val){
+	element *r;
 	
+	r=(element*)malloc(sizeof(element));
+	r->val=val;
+	r->svt=NULL;
+	if((*tete).dernier!=NULL)
+		((*tete).dernier)->svt=r;
+	else 
+		(*tete).premier=r;
 	
-	
-	p=(File*)malloc(sizeof(File));
-	p->champs=val;
-	p->svt=NULL;
-	if(*tete==NULL)
-		*tete=p;
-	else{
-		while (a->svt!= NULL){
-			a=a->svt;
-		}
-		a->svt=p;
-	}
-	
-}
-
-
-
-bool file_vide (File *tete){
-	return tete==NULL;
+	(*tete).dernier=r;
 }
 
 
-void defiler(File **tete, int *val){
+
+bool file_vide (File tete){
+	return tete.premier==NULL;
+}
+
+
+void defiler(File *tete, int *val){
+	element *nb;
+	
 	if (file_vide(*tete))
 		printf("la file est vide \n");
 	else {
-	*val=(*tete)->champs;
-	*tete=(*tete)->svt;
+		*val=((*tete).premier)->val;
+		nb=(*tete).premier;
+		if((*tete).premier==(*tete).dernier){
+			(*tete).dernier=NULL;	
+		}
+		(*tete).premier=((*tete).premier)->svt;
+		free(nb);
 	}
 }
 
-int tete_file (File *tete){
+int tete_file (File tete){
 	
-	return tete->champs;
+	return (tete.premier)->val;
 	
 }
-
 
 
