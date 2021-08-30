@@ -189,3 +189,7 @@ void taille (client *tab,int n ,int *max_nom, int *max_prenom, int *max_adresse)
 	}
 	
 }
+
+void creation_tab (){
+	
+}
