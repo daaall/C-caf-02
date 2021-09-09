@@ -1,7 +1,7 @@
 #include<stdbool.h>
 
 struct PILE {
-	float champs;
+	int champs;
 	struct PILE *svt;
 };typedef struct PILE PILE;
 
@@ -10,7 +10,7 @@ void init_pile (PILE **tete){
 	*tete=NULL;
 }
 
-void empiler (PILE **tete, float val){
+void empiler (PILE **tete, int val){
 	PILE *p;
 	
 	
@@ -20,7 +20,7 @@ void empiler (PILE **tete, float val){
 	*tete=p;
 	
 }
-void depiler (PILE **tete,float *val){
+void depiler (PILE **tete,int *val){
 	PILE *x;
 	
 	
@@ -30,7 +30,7 @@ void depiler (PILE **tete,float *val){
 	free(x);
 }
 
-float sommet (PILE *tete){
+int sommet (PILE *tete){
 	return tete->champs;
 	
 }
@@ -39,11 +39,11 @@ bool pile_vide ( PILE *tete){
 }
 
 void afficher_pile (PILE *tete){
-	float val;
+	int val;
 	
 	while (!pile_vide(tete)){
 		depiler(&tete,&val);
-		printf ("%.2f \n",val);
+		printf ("%d \n",val);
 		printf ("\n");
 		printf ("\n");
 	}
