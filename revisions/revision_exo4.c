@@ -17,6 +17,7 @@ int main (){
 	
 	remplissage(&tete,n);
 	affichage(tete);
+	printf("\n");
 	printf("lindice du maximum de cette liste est : %d \n",indice_max(tete));
 	
 	
