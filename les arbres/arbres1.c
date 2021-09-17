@@ -64,11 +64,27 @@ void affichage (arbre *racine){
 	
 }
 
-
+void max_min(arbre *racine,int *max,int *min){
+	arbre *p,*q;
+	
+	p=racine;
+	q=racine;
+	
+	while (p->fdroit!=NULL){
+		p=p->fdroit;
+	}
+	*max=p->cle;
+	
+	while (q->fgauche!=NULL){
+		q=p->fgauche;
+	}*min=q->cle;
+	
+}
 
 int main (){
-	int n;
+	int n,min,max;
 	arbre *racine=NULL;
+	
 	
 	do{
 		printf ("donnez la taille de larbre \n");
@@ -77,6 +93,9 @@ int main (){
 	
 	creation(&racine,n);
 	affichage (racine);
+	printf ("\n");
+	max_min(racine,&max,&min);
+	printf ("le max de cet arbre est : %d  le min est :  %d  \n",max,min);
 	
 	
 }
